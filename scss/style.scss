@@ -29,12 +29,18 @@ body {
 
 header,
 main,
-footer {
+section,
+footer,
+.intro {
   max-width: 1200px;
-  padding: 1rem 0;
+  padding: 2rem 0;
   width: 100%;
 }
-
+@media (min-width: 600px) {
+  header {
+    padding: 2rem 0;
+  }
+}
 header {
   align-items: center;
   display: flex;
@@ -48,19 +54,37 @@ header {
 
 main {
   align-items: center;
+  border-bottom: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  padding-bottom: 0;
+  max-width: 3000px;
+  width: 100%;
+  section {
+    border-bottom: 0;
+    &:last-of-type {
+      padding-bottom: 6rem;
+    }
+  }
+}
+
+section {
+  padding: 6rem 0;
 }
 
 footer {
   align-items: center;
   display: flex;
   flex-direction: column;
+  min-height: 3rem;
   padding: 1rem 0;
 }
 
 /* custom classes */
+.bg__light {
+  background-color: var(--clr4);
+}
 .bg__tan {
   background-color: var(--clr3);
 }
@@ -103,12 +127,10 @@ footer {
     display: flex;
     text-decoration: none;
     letter-spacing: 0.04rem;
-    img {
-      color: var(--clr2);
-      height: auto;
-      max-width: 100%;
-      padding-left: 1rem;
-      padding-right: 0.5rem;
+    #header-img {
+      color: var(--clr4);
+      padding-left: 0.4rem;
+      padding-right: 0.4rem;
     }
   }
 }
@@ -149,7 +171,7 @@ footer {
     align-items: center;
     display: flex;
     flex-direction: column;
-    padding: 3.2rem 2rem 2rem 2rem;
+    padding: 4.8rem 2rem;
     > * {
       height: 100%;
     }
@@ -158,52 +180,75 @@ footer {
       display: grid;
       grid-template-columns: 60% 40%;
       flex-direction: row;
-      padding: 4rem 0.6rem;
+      padding: 6.4rem 0.6rem;
     }
-    img {
-      border: 10px solid var(--clr3);
-      height: auto;
-      max-width: 100%;
+    @media (min-width: 900px) {
+      grid-template-columns: 50% 50%;
     }
-
+    .intro__image {
+      img {
+        border: 10px solid var(--clr2);
+        height: auto;
+        max-width: 100%;
+        margin-bottom: 1.4rem;
+        @media (min-width: 600px) {
+          border-width: 15px;
+          margin-bottom: 0;
+        }
+        @media (min-width: 900px) {
+          border-width: 20px;
+        }
+        @media (min-width: 1200px) {
+          border-width: 35px;
+        }
+      }
+    }
     .intro__heading-and-link {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: space-evenly;
       font-size: 1rem;
       @media (min-width: 600px) {
         padding-left: 2rem;
         padding-bottom: 0.3rem;
+      }
+      @media (min-width: 900px) {
+        padding-left: 3rem;
+      }
+      @media (min-width: 1200px) {
+        padding-left: 4rem;
       }
       h1 {
         align-items: center;
         color: var(--clr1);
         display: flex;
         font-size: 1.6rem;
-        line-height: 2.4rem;
+        line-height: 2rem;
         text-align: center;
         @media (min-width: 600px) {
           font-size: 1.8rem;
           font-weight: 700;
           letter-spacing: 0.15rem;
-          line-height: 2.7rem;
+          line-height: 2.4rem;
         }
         @media (min-width: 750px) {
           font-size: 2.4rem;
-          line-height: 4.2rem;
+          line-height: 3.2rem;
         }
         @media (min-width: 900px) {
           font-size: 2.8rem;
-          line-height: 5.4rem;
+          line-height: 4rem;
         }
         @media (min-width: 1200px) {
           font-size: 4rem;
+          line-height: 4.8rem;
         }
       }
       a {
-        background-color: var(--clr1);
-        border: 2px solid var(--clr2);
-        color: var(--clr4);
+        background-color: transparent;
+        border: 5px solid var(--clr1);
+        border-radius: 0.4rem;
+        color: var(--clr1);
         display: flex;
         font-size: 1.4rem;
         font-weight: 100;
@@ -213,11 +258,19 @@ footer {
         padding: 2rem;
         text-align: center;
         text-decoration: none;
+        transition: all 1s;
         @media (min-width: 600px) {
           padding: 2rem;
         }
         @media (min-width: 900px) {
+          border-width: 10px;
+          font-size: 2rem;
           padding: 2.4rem 4rem;
+        }
+        &:hover {
+          background-color: var(--clr2);
+          border-color: var(--clr1);
+          color: var(--clr4);
         }
       }
     }
@@ -230,33 +283,52 @@ section {
   color: var(--clr1);
   display: flex;
   flex-direction: column;
-  padding: 2rem;
-  width: 100%;
-  &:nth-of-type(2) {
-    background-color: var(--clr2);
+  padding: 3rem 1rem;
+  > * {
+    width: 100%;
+  }
+  @media (min-width: 1200px) {
+    padding: 4rem 2rem;
   }
   #video {
-    height: 300px;
     width: 400px;
+    height: 220px;
     @media (min-width: 600px) {
-      height: 450px;
-      width: 600px;
+      height: 400px;
+      width: 100%;
     }
-  }
-  &.newsletter {
-    background-color: var(--clr2);
-    border-bottom: 0;
+    @media (min-width: 900px) {
+      height: 600px;
+      width: 100%;
+    }
+    @media (min-width: 1200px) {
+      height: 800px;
+      width: 100%;
+    }
   }
 }
 h2 {
-  color: var(--clr-white);
-  display: flex;
   align-self: center;
-  letter-spacing: 0.12rem;
-  font-weight: 100;
+  color: var(--clr-white);
   border-bottom: 4px solid var(--clr1);
-  padding-bottom: 0rem;
+  display: flex;
+  font-weight: 100;
+  font-size: 1.8rem;
+  letter-spacing: 0.12rem;
   margin-bottom: 2rem;
+  margin-left: 0.6rem;
+  padding-bottom: 0rem;
+  @media (min-width: 600px) {
+    font-size: 2rem;
+  }
+  @media (min-width: 900px) {
+    border-bottom: 5px solid var(--clr1);
+    font-size: 2.4rem;
+  }
+  @media (min-width: 1200px) {
+    border-bottom: 6px solid var(--clr1);
+    font-size: 2.8rem;
+  }
 }
 
 form {
@@ -297,11 +369,21 @@ form {
       color: var(--clr3);
       text-align: center;
     }
+    @media (min-width: 900px) {
+      margin-bottom: 2rem;
+    }
+    @media (min-width: 1200px) {
+      margin-bottom: 2.4rem;
+    }
   }
   input[type="email"] {
+    background-color: var(--clr4);
     color: var(--clr1);
     padding: 1rem;
     text-align: center;
+    &::placeholder {
+      color: var(--clr1);
+    }
   }
   input[type="submit"] {
     background-color: var(--clr1);
@@ -312,6 +394,15 @@ form {
     &:hover {
       background-color: var(--clr4);
       color: var(--clr1);
+    }
+  }
+}
+footer p {
+  color: var(--clr4);
+  a {
+    color: var(--clr4);
+    &:hover {
+      text-decoration: none;
     }
   }
 }
